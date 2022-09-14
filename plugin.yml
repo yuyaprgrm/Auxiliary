@@ -1,0 +1,6 @@
+name: Auxiliary
+main: be\nnse\auxiliary\Auxiliary
+version: 1.0.0
+api: 4.0.0
+load: POSTWORLD
+author: Nnse
