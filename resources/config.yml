@@ -92,7 +92,7 @@ command:
   teleport-to-world:
     enabled: true
     name: "tpworld"
-    aliases: ["tptw", "w"]
+    aliases: ["tptw", "tw"]
   # Add the feature to teleport to spawn point of the world
   # Usage /tpspawn [player]
   # e.g. /tpspawn
