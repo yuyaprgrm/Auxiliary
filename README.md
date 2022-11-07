@@ -119,7 +119,7 @@ command:
     aliases: ["psound", "ps"]
   # Add the feature to stop sound effect
   # Usage /stopsound <soundName>
-  # e.g. /playsound note.guitar
+  # e.g. /stopsound note.guitar
   stop-sound:
     enabled: true
     name: "stopsound"
