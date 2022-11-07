@@ -69,7 +69,7 @@ blocks-status:
 # e.g. /killentity ?
 command:
   enabled: true
-  # Add the feature to check item in hand. (e.g. "/checkitem")
+  # Add the feature to check item in hand
   # Usage /checkitem
   # e.g. /checkitem
   check-item:
@@ -79,7 +79,7 @@ command:
     name: "checkitem"
     # Command aliases.
     aliases: ["ci", "id"]
-  # Add the feature to kill entities in the world. (e.g. "/killentity <id|typeName>[,...<id|typeName>]")
+  # Add the feature to kill entities in the world
   # Usage /killentity
   #       /killentity <id|typeName>[,...<id|typeName>]
   # e.g. /killentity 0
@@ -89,6 +89,13 @@ command:
     enabled: true
     name: "killentity"
     aliases: ["kille", "ke"]
+  # Add the feature to spawn entity in the world
+  # Usage /spawnentity <typeName> [nameTag]
+  # e.g. /spawnentity Villager
+  spawn-entity:
+    enabled: true
+    name: "spawnentity"
+    aliases: [ "spawne", "summon", "se" ]
   # Add the feature to teleport between worlds
   # Usage /tpworld <worldName> [player]
   # e.g. /tpworld lobby
