@@ -41,8 +41,6 @@ movement-status:
   show-pitch: true
   # World name in player now
   show-world: true
-  # Current player's motion
-  show-motion: true
   # Player's direction
   show-direction: true
 
