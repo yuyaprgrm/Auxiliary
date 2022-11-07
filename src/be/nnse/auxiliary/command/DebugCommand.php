@@ -15,7 +15,7 @@ abstract class DebugCommand extends Command
     public function __construct(string $name, string $description = "", array $aliases = [])
     {
         $usageMessage = implode("\n", array_map(function (string $param) use ($name) {
-            return "/" . $name . $param;
+            return "/" . $name . " " . $param;
         }, $this->getParameterDetails()));
         parent::__construct($name, $description, $usageMessage, $aliases);
 

@@ -31,18 +31,21 @@ use pocketmine\utils\EnumTrait;
  * @method static ConfigValue COMMAND()
  * @method static ConfigValue COMMAND_CHECK_ITEM()
  * @method static ConfigValue COMMAND_KILL_ENTITY()
+ * @method static ConfigValue COMMAND_SPAWN_ENTITY()
  * @method static ConfigValue COMMAND_TP_WORLD()
  * @method static ConfigValue COMMAND_TP_SPAWN()
  * @method static ConfigValue COMMAND_PLAY_SOUND()
  * @method static ConfigValue COMMAND_STOP_SOUND()
  * @method static ConfigValue COMMAND_CHECK_ITEM_NAME()
  * @method static ConfigValue COMMAND_KILL_ENTITY_NAME()
+ * @method static ConfigValue COMMAND_SPAWN_ENTITY_NAME()
  * @method static ConfigValue COMMAND_TP_WORLD_NAME()
  * @method static ConfigValue COMMAND_TP_SPAWN_NAME()
  * @method static ConfigValue COMMAND_PLAY_SOUND_NAME()
  * @method static ConfigValue COMMAND_STOP_SOUND_NAME()
  * @method static ConfigValue COMMAND_CHECK_ITEM_ALIASES()
  * @method static ConfigValue COMMAND_KILL_ENTITY_ALIASES()
+ * @method static ConfigValue COMMAND_SPAWN_ENTITY_ALIASES()
  * @method static ConfigValue COMMAND_TP_WORLD_ALIASES()
  * @method static ConfigValue COMMAND_TP_SPAWN_ALIASES()
  * @method static ConfigValue COMMAND_PLAY_SOUND_ALIASES()
@@ -87,6 +90,7 @@ class ConfigValue
             new self("command", "command.enabled", true),
             new self("command_check_item", "command.check-item.enabled", true),
             new self("command_kill_entity", "command.kill-entity.enabled", true),
+            new self("command_spawn_entity", "command.spawn-entity.enabled", true),
             new self("command_tp_world", "command.teleport-to-world.enabled", true),
             new self("command_tp_spawn", "command.teleport-to-spawn.enabled", true),
             new self("command_play_sound", "command.play-sound.enabled", true),
@@ -94,6 +98,7 @@ class ConfigValue
 
             new self("command_check_item_name", "command.check-item.name", "checkitem"),
             new self("command_kill_entity_name", "command.kill-entity.name", "killentity"),
+            new self("command_spawn_entity_name", "command.spawn-entity.name", "spawnentity"),
             new self("command_tp_world_name", "command.teleport-to-world.name", "tpworld"),
             new self("command_tp_spawn_name", "command.teleport-to-spawn.name", "tpspawn"),
             new self("command_play_sound_name", "command.play-sound.name", "playsound"),
@@ -101,6 +106,7 @@ class ConfigValue
 
             new self("command_check_item_aliases", "command.check-item.aliases", []),
             new self("command_kill_entity_aliases", "command.kill-entity.aliases", []),
+            new self("command_spawn_entity_aliases", "command.spawn-entity.aliases", []),
             new self("command_tp_world_aliases", "command.teleport-to-world.aliases", []),
             new self("command_tp_spawn_aliases", "command.teleport-to-spawn.aliases", []),
             new self("command_play_sound_aliases", "command.play-sound.aliases", []),

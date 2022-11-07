@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace be\nnse\auxiliary;
 
 use be\nnse\auxiliary\command\CheckItemCommand;
-use be\nnse\auxiliary\command\SpawnParticleCommand;
+use be\nnse\auxiliary\command\SpawnEntityCommand;
 use be\nnse\auxiliary\command\KillEntityCommand;
 use be\nnse\auxiliary\command\PlaySoundCommand;
 use be\nnse\auxiliary\command\StopSoundCommand;
@@ -91,6 +91,12 @@ class Auxiliary extends PluginBase
                 $commands[] = new KillEntityCommand(
                     (string) ConfigValue::COMMAND_KILL_ENTITY_NAME()->get(),
                     (array) ConfigValue::COMMAND_KILL_ENTITY_ALIASES()->get()
+                );
+            }
+            if (ConfigValue::COMMAND_SPAWN_ENTITY()->get()) {
+                $commands[] = new SpawnEntityCommand(
+                    (string) ConfigValue::COMMAND_SPAWN_ENTITY_NAME()->get(),
+                    (array) ConfigValue::COMMAND_SPAWN_ENTITY_ALIASES()->get()
                 );
             }
             if (ConfigValue::COMMAND_TP_WORLD()->get()) {
