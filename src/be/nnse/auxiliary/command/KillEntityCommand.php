@@ -115,7 +115,11 @@ class KillEntityCommand extends DebugCommand
             if ($deleted) {
                 $texts = [];
                 foreach ($targetEntries as $id => $count) {
-                    $texts[] = $count . " " . $this->toPlural($id);
+                    if ($count == 1) {
+                        $texts[] = $count . " " . $id;
+                    } else {
+                        $texts[] = $count . " " . $this->toPlural($id);
+                    }
                 }
                 $text = implode(", ", $texts);
                 $message = "Target entities have been despawned (" . $text . ")";
