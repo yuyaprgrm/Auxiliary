@@ -54,7 +54,7 @@ class KillEntityCommand extends DebugCommand
             }
             $targets = [];
 
-            // 複数の場合
+            // TypeId & integer id
             if (is_string($args[0]) && str_contains($args[0], ",")) {
                 $candidates = explode(",", $args[0]);
                 foreach ($candidates as $candidate) {
@@ -74,13 +74,13 @@ class KillEntityCommand extends DebugCommand
                     }
                 }
             } else {
-                // IDのみの場合
+                // integer id
                 if (is_numeric($args[0])) {
                     $eid = (int) $args[0];
                     $target = $sender->getWorld()->getEntity($eid);
                     if ($target !== null) $targets[] = $target;
                 }
-                // タイプIDの場合
+                // TypeId
                 if (is_string($args[0])) {
                     foreach ($entities as $entity) {
                         $candidateTypeId = $this->getCorrectNetworkTypeId($args[0]);
