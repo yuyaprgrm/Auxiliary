@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace be\nnse\auxiliary;
 
 use be\nnse\auxiliary\command\CheckItemCommand;
-use be\nnse\auxiliary\command\SpawnEntityCommand;
 use be\nnse\auxiliary\command\KillEntityCommand;
 use be\nnse\auxiliary\command\PlaySoundCommand;
+use be\nnse\auxiliary\command\SpawnEntityCommand;
 use be\nnse\auxiliary\command\StopSoundCommand;
 use be\nnse\auxiliary\command\TeleportSpawnCommand;
 use be\nnse\auxiliary\command\TeleportWorldCommand;

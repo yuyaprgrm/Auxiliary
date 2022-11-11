@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace be\nnse\auxiliary\listener;
 
-use be\nnse\auxiliary\ConfigValue;
 use be\nnse\auxiliary\Auxiliary;
+use be\nnse\auxiliary\ConfigValue;
 use pocketmine\event\Listener;
 use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\event\server\DataPacketSendEvent;
