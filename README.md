@@ -62,9 +62,9 @@ blocks-status:
   in_lava: true
 
 
+# NOTE: THESE COMMAND CANNOT RUN FROM CONSOLE!
 # Whether to be able to use those commands and command detail settings
 # The first argument is "?" to check the usage of the command
-# NOTE: THESE COMMAND CANNOT RUN FROM CONSOLE!
 # e.g. /killentity ?
 command:
   enabled: true
