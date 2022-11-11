@@ -64,6 +64,7 @@ blocks-status:
 
 # Whether to be able to use those commands and command detail settings
 # The first argument is "?" to check the usage of the command
+# NOTE: THESE COMMAND CANNOT RUN FROM CONSOLE!
 # e.g. /killentity ?
 command:
   enabled: true
@@ -77,6 +78,12 @@ command:
     name: "checkitem"
     # Command aliases.
     aliases: ["ci", "id"]
+    # Default state of the permission. Explanation of each value:
+    #  op (isop, operator, isoperator, admin, isadmin): only op players
+    #  notop (!op, notoperator, !operator, notadmin, !admin): only not-op players
+    #  true: everyone
+    #  false: no one
+    permission: "op"
   # Add the feature to kill entities in the world
   # Usage /killentity
   #       /killentity <id|typeName>[,...<id|typeName>]
@@ -87,6 +94,7 @@ command:
     enabled: true
     name: "killentity"
     aliases: ["kille", "ke"]
+    permission: "op"
   # Add the feature to spawn entity in the world
   # Usage /spawnentity <typeName> [nameTag]
   # e.g. /spawnentity Villager
@@ -94,6 +102,7 @@ command:
     enabled: true
     name: "spawnentity"
     aliases: [ "spawne", "summon", "se" ]
+    permission: "op"
   # Add the feature to teleport between worlds
   # Usage /tpworld <worldName> [player]
   # e.g. /tpworld lobby
@@ -102,6 +111,7 @@ command:
     enabled: true
     name: "tpworld"
     aliases: ["tptw", "tw"]
+    permission: "op"
   # Add the feature to teleport to spawn point of the world
   # Usage /tpspawn [player]
   # e.g. /tpspawn
@@ -110,6 +120,7 @@ command:
     enabled: true
     name: "tpspawn"
     aliases: ["spawn", "tpts"]
+    permission: "op"
   # Add the feature to play/stop sound effect
   # Usage /playsound <soundName> [volume] [pitch]
   # e.g. /playsound note.guitar 1 1
@@ -117,6 +128,7 @@ command:
     enabled: true
     name: "playsound"
     aliases: ["psound", "ps"]
+    permission: "op"
   # Add the feature to stop sound effect
   # Usage /stopsound <soundName>
   # e.g. /stopsound note.guitar
@@ -124,4 +136,39 @@ command:
     enabled: true
     name: "stopsound"
     aliases: ["ssound", "ss"]
+    permission: "op"
+  # Set target player's metadata flag
+  # Usage /setplayerflag <key> <value> [player]
+  # e.g. /setplayerflag 0 true
+  set-player-flag:
+    enabled: true
+    name: "setplayerflag"
+    aliases: ["playerflag", "pf"]
+    permission: "op"
+  # Set target player's metadata property
+  # If it is not set, add it with any type
+  # Value example per type:
+  #   string: steve
+  #   int: 10
+  #   byte: 10b
+  #   long: 10l
+  #   short: 10s
+  #   float: 10f
+  #   blockpos: b#10,10,10
+  #   vector3f: v#10,10,10
+  # For the key, see https://github.com/pmmp/BedrockProtocol/blob/master/src/types/entity/EntityMetadataProperties.php
+  # Usage /setplayerproperty <key> <value> [player]
+  # e.g. /setplayerproperty 4 Steve
+  #      /setplayerproperty 1 20
+  #      /setplayerproperty 3 1b
+  #      /setplayerproperty 5 1l
+  #      /setplayerproperty 7 10s
+  #      /setplayerproperty 13 2f
+  #      /setplayerproperty 28 b#10,10,10
+  #      /setplayerproperty 56 v#10,10,10
+  set-player-property:
+    enabled: true
+    name: "setplayerproperty"
+    aliases: ["playerproperty", "pp"]
+    permission: "op"
 ```
