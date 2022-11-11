@@ -84,43 +84,50 @@ class Auxiliary extends PluginBase
             if (ConfigValue::COMMAND_CHECK_ITEM()->get()) {
                 $commands[] = new CheckItemCommand(
                     (string) ConfigValue::COMMAND_CHECK_ITEM_NAME()->get(),
-                    (array) ConfigValue::COMMAND_CHECK_ITEM_ALIASES()->get()
+                    (array) ConfigValue::COMMAND_CHECK_ITEM_ALIASES()->get(),
+                    (string) ConfigValue::COMMAND_CHECK_ITEM_PERMISSION()->get()
                 );
             }
             if (ConfigValue::COMMAND_KILL_ENTITY()->get()) {
                 $commands[] = new KillEntityCommand(
                     (string) ConfigValue::COMMAND_KILL_ENTITY_NAME()->get(),
-                    (array) ConfigValue::COMMAND_KILL_ENTITY_ALIASES()->get()
+                    (array) ConfigValue::COMMAND_KILL_ENTITY_ALIASES()->get(),
+                    (string) ConfigValue::COMMAND_KILL_ENTITY_PERMISSION()->get(),
                 );
             }
             if (ConfigValue::COMMAND_SPAWN_ENTITY()->get()) {
                 $commands[] = new SpawnEntityCommand(
                     (string) ConfigValue::COMMAND_SPAWN_ENTITY_NAME()->get(),
-                    (array) ConfigValue::COMMAND_SPAWN_ENTITY_ALIASES()->get()
+                    (array) ConfigValue::COMMAND_SPAWN_ENTITY_ALIASES()->get(),
+                    (string) ConfigValue::COMMAND_SPAWN_ENTITY_PERMISSION()->get(),
                 );
             }
             if (ConfigValue::COMMAND_TP_WORLD()->get()) {
                 $commands[] = new TeleportWorldCommand(
                     (string) ConfigValue::COMMAND_TP_WORLD_NAME()->get(),
-                    (array) ConfigValue::COMMAND_TP_WORLD_ALIASES()->get()
+                    (array) ConfigValue::COMMAND_TP_WORLD_ALIASES()->get(),
+                    (string) ConfigValue::COMMAND_TP_WORLD_PERMISSION()->get(),
                 );
             }
             if (ConfigValue::COMMAND_TP_SPAWN()->get()) {
                 $commands[] = new TeleportSpawnCommand(
                     (string) ConfigValue::COMMAND_TP_SPAWN_NAME()->get(),
-                    (array) ConfigValue::COMMAND_TP_SPAWN_ALIASES()->get()
+                    (array) ConfigValue::COMMAND_TP_SPAWN_ALIASES()->get(),
+                    (string) ConfigValue::COMMAND_TP_SPAWN_PERMISSION()->get(),
                 );
             }
             if (ConfigValue::COMMAND_PLAY_SOUND()->get()) {
                 $commands[] = new PlaySoundCommand(
                     (string) ConfigValue::COMMAND_PLAY_SOUND_NAME()->get(),
-                    (array) ConfigValue::COMMAND_PLAY_SOUND_ALIASES()->get()
+                    (array) ConfigValue::COMMAND_PLAY_SOUND_ALIASES()->get(),
+                    (string) ConfigValue::COMMAND_PLAY_SOUND_PERMISSION()->get(),
                 );
             }
             if (ConfigValue::COMMAND_STOP_SOUND()->get()) {
                 $commands[] = new StopSoundCommand(
                     (string) ConfigValue::COMMAND_STOP_SOUND_NAME()->get(),
-                    (array) ConfigValue::COMMAND_STOP_SOUND_ALIASES()->get()
+                    (array) ConfigValue::COMMAND_STOP_SOUND_ALIASES()->get(),
+                    (string) ConfigValue::COMMAND_STOP_SOUND_PERMISSION()->get(),
                 );
             }
 

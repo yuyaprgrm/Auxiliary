@@ -9,11 +9,11 @@ use pocketmine\network\mcpe\protocol\PlaySoundPacket;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 
-class PlaySoundCommand extends DebugCommand
+class PlaySoundCommand extends WrapperCommand
 {
-    public function __construct(string $name, array $aliases = [])
+    public function __construct(string $name, array $aliases = [], $default = "op")
     {
-        parent::__construct($name, "Play sound effect", $aliases);
+        parent::__construct($name, "Play sound effect", $aliases, $default);
     }
 
     public function getParameterDetails() : array
@@ -67,7 +67,7 @@ class PlaySoundCommand extends DebugCommand
             $sender->getNetworkSession()->sendDataPacket($pk);
 
             $message = "Play the sound \"" . $soundName . "\" (volume: " . $volume . ", pitch: " . $pitch . ")";
-            DebugCommand::broadcastCommandMessage($sender, $message);
+            WrapperCommand::broadcastCommandMessage($sender, $message);
         }
         return null;
     }

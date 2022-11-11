@@ -50,6 +50,13 @@ use pocketmine\utils\EnumTrait;
  * @method static ConfigValue COMMAND_TP_SPAWN_ALIASES()
  * @method static ConfigValue COMMAND_PLAY_SOUND_ALIASES()
  * @method static ConfigValue COMMAND_STOP_SOUND_ALIASES()
+ * @method static ConfigValue COMMAND_CHECK_ITEM_PERMISSION()
+ * @method static ConfigValue COMMAND_KILL_ENTITY_PERMISSION()
+ * @method static ConfigValue COMMAND_SPAWN_ENTITY_PERMISSION()
+ * @method static ConfigValue COMMAND_TP_WORLD_PERMISSION()
+ * @method static ConfigValue COMMAND_TP_SPAWN_PERMISSION()
+ * @method static ConfigValue COMMAND_PLAY_SOUND_PERMISSION()
+ * @method static ConfigValue COMMAND_STOP_SOUND_PERMISSION()
  */
 class ConfigValue
 {
@@ -111,6 +118,14 @@ class ConfigValue
             new self("command_tp_spawn_aliases", "command.teleport-to-spawn.aliases", []),
             new self("command_play_sound_aliases", "command.play-sound.aliases", []),
             new self("command_stop_sound_aliases", "command.stop-sound.aliases", []),
+
+            new self("command_check_item_permission", "command.check-item.permission", "op"),
+            new self("command_kill_entity_permission", "command.kill-entity.permission", "op"),
+            new self("command_spawn_entity_permission", "command.spawn-entity.permission", "op"),
+            new self("command_tp_world_permission", "command.teleport-to-world.permission", "op"),
+            new self("command_tp_spawn_permission", "command.teleport-to-spawn.permission", "op"),
+            new self("command_play_sound_permission", "command.play-sound.permission", "op"),
+            new self("command_stop_sound_permission", "command.stop-sound.permission", "op"),
         );
     }
 

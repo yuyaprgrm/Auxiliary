@@ -14,11 +14,11 @@ use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 use ReflectionClass;
 
-class SpawnEntityCommand extends DebugCommand
+class SpawnEntityCommand extends WrapperCommand
 {
-    public function __construct(string $name, array $aliases = [])
+    public function __construct(string $name, array $aliases = [], $default = "op")
     {
-        parent::__construct($name, "Spawn entity in the world", $aliases);
+        parent::__construct($name, "Spawn entity in the world", $aliases, $default);
     }
 
     public function getParameterDetails() : array
@@ -82,7 +82,7 @@ class SpawnEntityCommand extends DebugCommand
         }
 
         $message = "Spawn new entity \"" . $entity::getNetworkTypeId() . "\" in this world";
-        DebugCommand::broadcastCommandMessage($sender, $message);
+        WrapperCommand::broadcastCommandMessage($sender, $message);
         return null;
     }
 }

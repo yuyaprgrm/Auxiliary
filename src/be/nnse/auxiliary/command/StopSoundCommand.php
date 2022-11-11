@@ -9,11 +9,11 @@ use pocketmine\network\mcpe\protocol\StopSoundPacket;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 
-class StopSoundCommand extends DebugCommand
+class StopSoundCommand extends WrapperCommand
 {
-    public function __construct(string $name, array $aliases = [])
+    public function __construct(string $name, array $aliases = [], $default = "op")
     {
-        parent::__construct($name, "Stop sound effect", $aliases);
+        parent::__construct($name, "Stop sound effect", $aliases, $default);
     }
 
     public function getParameterDetails() : array
@@ -37,7 +37,7 @@ class StopSoundCommand extends DebugCommand
             $sender->getNetworkSession()->sendDataPacket(StopSoundPacket::create($soundName, true));
 
             $message = "Stop the sound \"" . $soundName . "\"";
-            DebugCommand::broadcastCommandMessage($sender, $message);
+            WrapperCommand::broadcastCommandMessage($sender, $message);
         }
         return null;
     }

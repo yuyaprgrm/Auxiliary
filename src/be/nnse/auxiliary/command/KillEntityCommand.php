@@ -11,11 +11,11 @@ use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 use ReflectionClass;
 
-class KillEntityCommand extends DebugCommand
+class KillEntityCommand extends WrapperCommand
 {
-    public function __construct(string $name, array $aliases = [])
+    public function __construct(string $name, array $aliases = [], $default = "op")
     {
-        parent::__construct($name, "Kill entities in the world", $aliases);
+        parent::__construct($name, "Kill entities in the world", $aliases, $default);
     }
 
     public function getParameterDetails() : array
@@ -123,7 +123,7 @@ class KillEntityCommand extends DebugCommand
                 }
                 $text = implode(", ", $texts);
                 $message = "Target entities have been despawned (" . $text . ")";
-                DebugCommand::broadcastCommandMessage($sender, $message);
+                WrapperCommand::broadcastCommandMessage($sender, $message);
             }
         }
         return null;

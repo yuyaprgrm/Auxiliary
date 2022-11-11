@@ -5,15 +5,16 @@ declare(strict_types=1);
 namespace be\nnse\auxiliary\command;
 
 use pocketmine\command\CommandSender;
+use pocketmine\permission\PermissionManager;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 use pocketmine\world\World;
 
-class TeleportWorldCommand extends DebugCommand
+class TeleportWorldCommand extends WrapperCommand
 {
-    public function __construct(string $name, array $aliases = [])
+    public function __construct(string $name, array $aliases = [], $default = "op")
     {
-        parent::__construct($name, "Teleport between worlds", $aliases);
+        parent::__construct($name, "Teleport between worlds", $aliases, $default);
     }
 
     public function getParameterDetails() : array
@@ -63,7 +64,7 @@ class TeleportWorldCommand extends DebugCommand
                     default => "Teleported to world \"{%1}\""
                 };
                 $message = str_replace(["{%0}", "{%1}"], [$player->getName(), $target->getFolderName()], $format);
-                DebugCommand::broadcastCommandMessage($sender, $message);
+                WrapperCommand::broadcastCommandMessage($sender, $message);
             }
         }
         return null;

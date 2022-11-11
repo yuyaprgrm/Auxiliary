@@ -8,11 +8,11 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 
-class TeleportSpawnCommand extends DebugCommand
+class TeleportSpawnCommand extends WrapperCommand
 {
-    public function __construct(string $name, array $aliases = [])
+    public function __construct(string $name, array $aliases = [], $default = "op")
     {
-        parent::__construct($name, "Teleport to spawn point of the world", $aliases);
+        parent::__construct($name, "Teleport to spawn point of the world", $aliases, $default);
     }
 
     public function getParameterDetails() : array
@@ -44,7 +44,7 @@ class TeleportSpawnCommand extends DebugCommand
                 default => "Teleported to spawn point in \"{%1}\""
             };
             $message = str_replace(["{%0}", "{%1}"], [$player->getName(), $world->getFolderName()], $format);
-            DebugCommand::broadcastCommandMessage($sender, $message);
+            WrapperCommand::broadcastCommandMessage($sender, $message);
         }
         return null;
     }

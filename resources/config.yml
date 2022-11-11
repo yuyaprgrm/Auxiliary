@@ -60,6 +60,7 @@ blocks-status:
 
 # Whether to be able to use those commands and command detail settings
 # The first argument is "?" to check the usage of the command
+# NOTE: THESE COMMAND CANNOT RUN FROM CONSOLE!
 # e.g. /killentity ?
 command:
   enabled: true
@@ -73,6 +74,12 @@ command:
     name: "checkitem"
     # Command aliases.
     aliases: ["ci", "id"]
+    # Default state of the permission. Explanation of each value:
+    #  op (isop, operator, isoperator, admin, isadmin): only op players
+    #  notop (!op, notoperator, !operator, notadmin, !admin): only not-op players
+    #  true: everyone
+    #  false: no one
+    permission: "op"
   # Add the feature to kill entities in the world
   # Usage /killentity
   #       /killentity <id|typeName>[,...<id|typeName>]
@@ -83,6 +90,7 @@ command:
     enabled: true
     name: "killentity"
     aliases: ["kille", "ke"]
+    permission: "op"
   # Add the feature to spawn entity in the world
   # Usage /spawnentity <typeName> [nameTag]
   # e.g. /spawnentity Villager
@@ -90,6 +98,7 @@ command:
     enabled: true
     name: "spawnentity"
     aliases: [ "spawne", "summon", "se" ]
+    permission: "op"
   # Add the feature to teleport between worlds
   # Usage /tpworld <worldName> [player]
   # e.g. /tpworld lobby
@@ -98,6 +107,7 @@ command:
     enabled: true
     name: "tpworld"
     aliases: ["tptw", "tw"]
+    permission: "op"
   # Add the feature to teleport to spawn point of the world
   # Usage /tpspawn [player]
   # e.g. /tpspawn
@@ -106,6 +116,7 @@ command:
     enabled: true
     name: "tpspawn"
     aliases: ["spawn", "tpts"]
+    permission: "op"
   # Add the feature to play/stop sound effect
   # Usage /playsound <soundName> [volume] [pitch]
   # e.g. /playsound note.guitar 1 1
@@ -113,6 +124,7 @@ command:
     enabled: true
     name: "playsound"
     aliases: ["psound", "ps"]
+    permission: "op"
   # Add the feature to stop sound effect
   # Usage /stopsound <soundName>
   # e.g. /stopsound note.guitar
@@ -120,3 +132,4 @@ command:
     enabled: true
     name: "stopsound"
     aliases: ["ssound", "ss"]
+    permission: "op"

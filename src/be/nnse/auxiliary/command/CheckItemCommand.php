@@ -8,11 +8,11 @@ use be\nnse\auxiliary\Auxiliary;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 
-class CheckItemCommand extends DebugCommand
+class CheckItemCommand extends WrapperCommand
 {
-    public function __construct(string $name, array $aliases = [])
+    public function __construct(string $name, array $aliases = [], string $default = "op")
     {
-        parent::__construct($name, "Check an item in hand", $aliases);
+        parent::__construct($name, "Check an item in hand", $aliases, $default);
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args) : mixed
@@ -48,7 +48,7 @@ class CheckItemCommand extends DebugCommand
                 $sender->sendMessage($tagData);
             }
 
-            DebugCommand::broadcastCommandMessage($sender, "Checked an item in hand", false);
+            WrapperCommand::broadcastCommandMessage($sender, "Checked an item in hand", false);
         }
         return null;
     }
