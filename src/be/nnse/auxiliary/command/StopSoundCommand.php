@@ -16,7 +16,7 @@ class StopSoundCommand extends WrapperCommand
         parent::__construct($name, "Stop sound effect", $aliases, $default);
     }
 
-    public function getParameterDetails() : array
+    protected function getParameterDetails() : array
     {
         return [
             "<soundName: text>",

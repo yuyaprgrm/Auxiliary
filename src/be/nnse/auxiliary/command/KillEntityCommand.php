@@ -18,7 +18,7 @@ class KillEntityCommand extends WrapperCommand
         parent::__construct($name, "Kill entities in the world", $aliases, $default);
     }
 
-    public function getParameterDetails() : array
+    protected function getParameterDetails() : array
     {
         return [
             "<id: int>",

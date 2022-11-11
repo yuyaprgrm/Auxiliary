@@ -54,10 +54,18 @@ abstract class WrapperCommand extends Command implements PluginOwned
     }
 
     /**
+     * @return array
+     */
+    protected function getParameterDetails() : array
+    {
+        return [];
+    }
+
+    /**
      * @param CommandSender $sender
      * @return bool
      */
-    public function checkPermission(CommandSender $sender) : bool
+    private function checkPermission(CommandSender $sender) : bool
     {
         if ($sender instanceof ConsoleCommandSender) return false;
         $isOp = Server::getInstance()->isOp($sender->getName());
@@ -67,13 +75,5 @@ abstract class WrapperCommand extends Command implements PluginOwned
             PermissionParser::DEFAULT_TRUE => true,
             default => false
         };
-    }
-
-    /**
-     * @return array
-     */
-    public function getParameterDetails() : array
-    {
-        return [];
     }
 }

@@ -24,7 +24,7 @@ class SetPlayerFlagCommand extends WrapperCommand
         }
     }
 
-    public function getParameterDetails() : array
+    protected function getParameterDetails() : array
     {
         return [
             "<flag: int> <value: text> [player: target]",

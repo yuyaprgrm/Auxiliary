@@ -15,7 +15,7 @@ class TeleportSpawnCommand extends WrapperCommand
         parent::__construct($name, "Teleport to spawn point of the world", $aliases, $default);
     }
 
-    public function getParameterDetails() : array
+    protected function getParameterDetails() : array
     {
         return [
             "[player: target]"

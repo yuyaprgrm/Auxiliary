@@ -16,7 +16,7 @@ class PlaySoundCommand extends WrapperCommand
         parent::__construct($name, "Play sound effect", $aliases, $default);
     }
 
-    public function getParameterDetails() : array
+    protected function getParameterDetails() : array
     {
         return [
             "<soundName: text> [volume: float] [pitch: float]"

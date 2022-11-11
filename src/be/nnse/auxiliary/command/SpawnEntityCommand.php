@@ -18,7 +18,7 @@ class SpawnEntityCommand extends WrapperCommand
         parent::__construct($name, "Spawn entity in the world", $aliases, $default);
     }
 
-    public function getParameterDetails() : array
+    protected function getParameterDetails() : array
     {
         return [
             "<entityName: text> [nameTag: text]",

@@ -16,7 +16,7 @@ class TeleportWorldCommand extends WrapperCommand
         parent::__construct($name, "Teleport between worlds", $aliases, $default);
     }
 
-    public function getParameterDetails() : array
+    protected function getParameterDetails() : array
     {
         return [
             "<world: text> [player: target]"

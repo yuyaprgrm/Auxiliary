@@ -40,7 +40,7 @@ class SetPlayerPropertyCommand extends WrapperCommand
         }
     }
 
-    public function getParameterDetails() : array
+    protected function getParameterDetails() : array
     {
         return [
             "<property: int> <value: text> [player: target]",
