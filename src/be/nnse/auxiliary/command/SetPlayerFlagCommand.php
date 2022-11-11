@@ -72,8 +72,8 @@ class SetPlayerFlagCommand extends WrapperCommand
                 $player->getNetworkProperties()->setGenericFlag($key, $value);
 
                 $format = match (true) {
-                    $player !== $sender => "Updated {%0}'s metadata flag: {%1} to \"{%2}\"",
-                    default => "Updated metadata flag: {%1} to \"{%2}\""
+                    $player !== $sender => "Set {%0}'s metadata flag: {%1} to \"{%2}\"",
+                    default => "Set metadata flag: {%1} to \"{%2}\""
                 };
                 $message = str_replace(
                     ["{%0}", "{%1}", "{%2}"],

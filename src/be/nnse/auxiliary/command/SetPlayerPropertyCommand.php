@@ -100,8 +100,8 @@ class SetPlayerPropertyCommand extends WrapperCommand
                 }
 
                 $format = match (true) {
-                    $player !== $sender => "Updated {%0}'s metadata property: {%1} to \"{%2}\" ({%3})",
-                    default => "Updated metadata property: {%1} to \"{%2}\" ({%3})"
+                    $player !== $sender => "Set {%0}'s metadata property: {%1} to \"{%2}\" ({%3})",
+                    default => "Set metadata property: {%1} to \"{%2}\" ({%3})"
                 };
                 $message = str_replace(
                     ["{%0}", "{%1}", "{%2}", "{%3}"],
