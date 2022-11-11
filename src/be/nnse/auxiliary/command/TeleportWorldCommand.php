@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace be\nnse\auxiliary\command;
 
 use pocketmine\command\CommandSender;
-use pocketmine\permission\PermissionManager;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 use pocketmine\world\World;

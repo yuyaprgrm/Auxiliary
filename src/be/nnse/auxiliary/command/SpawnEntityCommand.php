@@ -4,12 +4,9 @@ declare(strict_types=1);
 
 namespace be\nnse\auxiliary\command;
 
-use be\nnse\auxiliary\Auxiliary;
 use pocketmine\command\CommandSender;
 use pocketmine\entity\Entity;
 use pocketmine\entity\EntityFactory;
-use pocketmine\entity\Villager;
-use pocketmine\network\mcpe\protocol\types\entity\EntityIds;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 use ReflectionClass;
