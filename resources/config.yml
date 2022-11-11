@@ -134,8 +134,10 @@ command:
     aliases: ["ssound", "ss"]
     permission: "op"
   # Set target player's metadata flag
-  # Usage /setplayerflag <key> <value> [player]
+  # Usage /setplayerflag <flag> <value> [player]
   # e.g. /setplayerflag 0 true
+  #      /setplayerflag ONFIRE true
+  #      /setplayerflag sneaking true
   set-player-flag:
     enabled: true
     name: "setplayerflag"
@@ -143,6 +145,7 @@ command:
     permission: "op"
   # Set target player's metadata property
   # If it is not set, add it with any type
+  # Property: https://github.com/pmmp/BedrockProtocol/blob/master/src/types/entity/EntityMetadataProperties.php
   # Value example per type:
   #   string: steve
   #   int: 10
@@ -152,16 +155,13 @@ command:
   #   float: 10f
   #   blockpos: b#10,10,10
   #   vector3f: v#10,10,10
-  # For the key, see https://github.com/pmmp/BedrockProtocol/blob/master/src/types/entity/EntityMetadataProperties.php
-  # Usage /setplayerproperty <key> <value> [player]
+  # Usage /setplayerproperty <property> <value> [player]
   # e.g. /setplayerproperty 4 Steve
-  #      /setplayerproperty 1 20
-  #      /setplayerproperty 3 1b
-  #      /setplayerproperty 5 1l
-  #      /setplayerproperty 7 10s
-  #      /setplayerproperty 13 2f
-  #      /setplayerproperty 28 b#10,10,10
-  #      /setplayerproperty 56 v#10,10,10
+  #      /setplayerproperty NAMETAG Steve
+  #      /setplayerproperty 38 2f
+  #      /setplayerproperty scale 2f
+  #      /setplayerproperty PLAYER_BED_POSITION b#10,10,10
+  #      /setplayerproperty RIDER_SEAT_POSITION v#10,10,10
   set-player-property:
     enabled: true
     name: "setplayerproperty"

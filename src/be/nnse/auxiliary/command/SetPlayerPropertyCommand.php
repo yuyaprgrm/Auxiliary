@@ -24,26 +24,27 @@ use pocketmine\utils\TextFormat;
 class SetPlayerPropertyCommand extends WrapperCommand
 {
     /** @var string[] */
-    private array $typeName = [];
+    private array $entityMetadataTypeNames = [];
     /** @var string[] */
-    private array $propertyName = [];
+    private array $entityMetadataPropertyNames = [];
 
     public function __construct(string $name, array $aliases = [], $default = "op")
     {
         parent::__construct($name, "Set target player's metadata property", $aliases, $default);
 
         foreach ((new \ReflectionClass(EntityMetadataTypes::class))->getConstants() as $key => $value) {
-            $this->typeName[$value] = $key;
+            $this->entityMetadataTypeNames[$value] = $key;
         }
         foreach ((new \ReflectionClass(EntityMetadataProperties::class))->getConstants() as $key => $value) {
-            $this->propertyName[$value] = $key;
+            $this->entityMetadataPropertyNames[$value] = $key;
         }
     }
 
     public function getParameterDetails() : array
     {
         return [
-            "<id: int> <value: text> [player: target]"
+            "<property: int> <value: text> [player: target]",
+            "<property: text> <value: text> [player: target]"
         ];
     }
 
@@ -56,44 +57,44 @@ class SetPlayerPropertyCommand extends WrapperCommand
                 $sender->sendMessage(TextFormat::RED . "Entity metadata property key is not defined");
                 return null;
             }
-            if (!is_numeric($args[0])) {
-                $sender->sendMessage(TextFormat::RED . "Type of entity metadata property key is must numeric, not string");
-                return null;
-            } elseif ($args[0] === "0") {
-                $sender->sendMessage(TextFormat::RED . "0 is not valid key");
-                return null;
+            if (is_numeric($args[0])) {
+                if ($args[0] === "0") {
+                    $sender->sendMessage(TextFormat::RED . "0 is not valid key");
+                    return null;
+                }
+                $propertyKey = (int) $args[0];
             } else {
-                $key = (int) $args[0];
+                $searchPropertyName = strtoupper($args[0]);
+                $flippedMetadataPropertyNames = array_flip($this->entityMetadataPropertyNames);
+                if (!isset($flippedMetadataPropertyNames[$searchPropertyName])) {
+                    $sender->sendMessage(TextFormat::RED . $args[0] . " is an undefined property");
+                    return null;
+                } else {
+                    $propertyKey = (int) $flippedMetadataPropertyNames[$searchPropertyName];
+                }
             }
+            $propertyName = $this->entityMetadataPropertyNames[$propertyKey] ?? "UNKNOWN";
 
             if (!isset($args[1])) {
                 $sender->sendMessage(TextFormat::RED . "Value is not defined");
                 return null;
             }
-            $rawValue = $args[1];
+            $rawPropertyValue = $args[1];
+            $propertyValue = $this->getCorrectValue($rawPropertyValue);
+            $typeName = $this->entityMetadataTypeNames[$propertyValue->getTypeId()] ?? "UNKNOWN";
 
             $player = $sender;
             if (isset($args[2]) && is_string($args[2])) {
                 $player = $sender->getServer()->getPlayerByPrefix($args[2]);
             }
-
             if ($player === null) {
                 $sender->sendMessage(TextFormat::RED . "Can't find player " . $args[2]);
                 return null;
             }
 
             if ($player instanceof Player) {
-                $propertyName = $this->propertyName[$key] ?? "UNKNOWN";
-                $value = $this->getCorrectValue($rawValue);
-                $typeName = $this->typeName[$value->getTypeId()] ?? "UNKNOWN";
-
-                if ($propertyName === "UNKNOWN") {
-                    $player->sendMessage(TextFormat::RED . "The key is not defined");
-                    return null;
-                }
-
                 try {
-                    $player->getNetworkProperties()->set($key, $value);
+                    $player->getNetworkProperties()->set($propertyKey, $propertyValue);
                 } catch (\Exception $e) {
                     $player->sendMessage(TextFormat::RED . "The value type is different");
                     return null;
@@ -105,7 +106,7 @@ class SetPlayerPropertyCommand extends WrapperCommand
                 };
                 $message = str_replace(
                     ["{%0}", "{%1}", "{%2}", "{%3}"],
-                    [$player->getName(), $propertyName, $rawValue, $typeName],
+                    [$player->getName(), $propertyName, $rawPropertyValue, $typeName],
                     $format
                 );
                 WrapperCommand::broadcastCommandMessage($sender, $message);
