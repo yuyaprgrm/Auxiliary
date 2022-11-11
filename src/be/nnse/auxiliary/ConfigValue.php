@@ -36,8 +36,8 @@ use pocketmine\utils\EnumTrait;
  * @method static ConfigValue COMMAND_TP_SPAWN()
  * @method static ConfigValue COMMAND_PLAY_SOUND()
  * @method static ConfigValue COMMAND_STOP_SOUND()
- * @method static ConfigValue COMMAND_UPDATE_PLAYER_FLAG()
- * @method static ConfigValue COMMAND_UPDATE_PLAYER_PROPERTY()
+ * @method static ConfigValue COMMAND_SET_PLAYER_FLAG()
+ * @method static ConfigValue COMMAND_SET_PLAYER_PROPERTY()
  * @method static ConfigValue COMMAND_CHECK_ITEM_NAME()
  * @method static ConfigValue COMMAND_KILL_ENTITY_NAME()
  * @method static ConfigValue COMMAND_SPAWN_ENTITY_NAME()
@@ -45,8 +45,8 @@ use pocketmine\utils\EnumTrait;
  * @method static ConfigValue COMMAND_TP_SPAWN_NAME()
  * @method static ConfigValue COMMAND_PLAY_SOUND_NAME()
  * @method static ConfigValue COMMAND_STOP_SOUND_NAME()
- * @method static ConfigValue COMMAND_UPDATE_PLAYER_FLAG_NAME()
- * @method static ConfigValue COMMAND_UPDATE_PLAYER_PROPERTY_NAME()
+ * @method static ConfigValue COMMAND_SET_PLAYER_FLAG_NAME()
+ * @method static ConfigValue COMMAND_SET_PLAYER_PROPERTY_NAME()
  * @method static ConfigValue COMMAND_CHECK_ITEM_ALIASES()
  * @method static ConfigValue COMMAND_KILL_ENTITY_ALIASES()
  * @method static ConfigValue COMMAND_SPAWN_ENTITY_ALIASES()
@@ -54,8 +54,8 @@ use pocketmine\utils\EnumTrait;
  * @method static ConfigValue COMMAND_TP_SPAWN_ALIASES()
  * @method static ConfigValue COMMAND_PLAY_SOUND_ALIASES()
  * @method static ConfigValue COMMAND_STOP_SOUND_ALIASES()
- * @method static ConfigValue COMMAND_UPDATE_PLAYER_FLAG_ALIASES()
- * @method static ConfigValue COMMAND_UPDATE_PLAYER_PROPERTY_ALIASES()
+ * @method static ConfigValue COMMAND_SET_PLAYER_FLAG_ALIASES()
+ * @method static ConfigValue COMMAND_SET_PLAYER_PROPERTY_ALIASES()
  * @method static ConfigValue COMMAND_CHECK_ITEM_PERMISSION()
  * @method static ConfigValue COMMAND_KILL_ENTITY_PERMISSION()
  * @method static ConfigValue COMMAND_SPAWN_ENTITY_PERMISSION()
@@ -63,8 +63,8 @@ use pocketmine\utils\EnumTrait;
  * @method static ConfigValue COMMAND_TP_SPAWN_PERMISSION()
  * @method static ConfigValue COMMAND_PLAY_SOUND_PERMISSION()
  * @method static ConfigValue COMMAND_STOP_SOUND_PERMISSION()
- * @method static ConfigValue COMMAND_UPDATE_PLAYER_FLAG_PERMISSION()
- * @method static ConfigValue COMMAND_UPDATE_PLAYER_PROPERTY_PERMISSION()
+ * @method static ConfigValue COMMAND_SET_PLAYER_FLAG_PERMISSION()
+ * @method static ConfigValue COMMAND_SET_PLAYER_PROPERTY_PERMISSION()
  */
 class ConfigValue
 {
@@ -110,8 +110,8 @@ class ConfigValue
             new self("command_tp_spawn", "command.teleport-to-spawn.enabled", true),
             new self("command_play_sound", "command.play-sound.enabled", true),
             new self("command_stop_sound", "command.stop-sound.enabled", true),
-            new self("command_update_player_flag", "command.update-player-flag.enabled", true),
-            new self("command_update_player_property", "command.update-player-property.enabled", true),
+            new self("command_set_player_flag", "command.set-player-flag.enabled", true),
+            new self("command_set_player_property", "command.set-player-property.enabled", true),
 
             new self("command_check_item_name", "command.check-item.name", "checkitem"),
             new self("command_kill_entity_name", "command.kill-entity.name", "killentity"),
@@ -120,8 +120,8 @@ class ConfigValue
             new self("command_tp_spawn_name", "command.teleport-to-spawn.name", "tpspawn"),
             new self("command_play_sound_name", "command.play-sound.name", "playsound"),
             new self("command_stop_sound_name", "command.stop-sound.name", "stopsound"),
-            new self("command_update_player_flag_name", "command.update-player-flag.name", "updateplayerflag"),
-            new self("command_update_player_property_name", "command.update-player-property.name", "updateplayerproperty"),
+            new self("command_set_player_flag_name", "command.set-player-flag.name", "setplayerflag"),
+            new self("command_set_player_property_name", "command.set-player-property.name", "setplayerproperty"),
 
             new self("command_check_item_aliases", "command.check-item.aliases", []),
             new self("command_kill_entity_aliases", "command.kill-entity.aliases", []),
@@ -130,8 +130,8 @@ class ConfigValue
             new self("command_tp_spawn_aliases", "command.teleport-to-spawn.aliases", []),
             new self("command_play_sound_aliases", "command.play-sound.aliases", []),
             new self("command_stop_sound_aliases", "command.stop-sound.aliases", []),
-            new self("command_update_player_flag_aliases", "command.update-player-flag.aliases", []),
-            new self("command_update_player_property_aliases", "command.update-player-property.aliases", []),
+            new self("command_set_player_flag_aliases", "command.set-player-flag.aliases", []),
+            new self("command_set_player_property_aliases", "command.set-player-property.aliases", []),
 
             new self("command_check_item_permission", "command.check-item.permission", "op"),
             new self("command_kill_entity_permission", "command.kill-entity.permission", "op"),
@@ -140,8 +140,8 @@ class ConfigValue
             new self("command_tp_spawn_permission", "command.teleport-to-spawn.permission", "op"),
             new self("command_play_sound_permission", "command.play-sound.permission", "op"),
             new self("command_stop_sound_permission", "command.stop-sound.permission", "op"),
-            new self("command_update_player_flag_permission", "command.update-player-flag.permission", "op"),
-            new self("command_update_player_property_permission", "command.update-player-property.permission", "op"),
+            new self("command_set_player_flag_permission", "command.set-player-flag.permission", "op"),
+            new self("command_set_player_property_permission", "command.set-player-property.permission", "op"),
         );
     }
 

@@ -133,16 +133,17 @@ command:
     name: "stopsound"
     aliases: ["ssound", "ss"]
     permission: "op"
-  # Add the feature to stop sound effect
-  # Usage /updateplayerflag <key> <value> [player]
-  # e.g. /updateplayerflag 0 true
-  update-player-flag:
+  # Set target player's metadata flag
+  # Usage /setplayerflag <key> <value> [player]
+  # e.g. /setplayerflag 0 true
+  set-player-flag:
     enabled: true
-    name: "updateplayerflag"
+    name: "setplayerflag"
     aliases: ["playerflag", "pf"]
     permission: "op"
-  # Add the feature to stop sound effect
-  # Value format:
+  # Set target player's metadata property
+  # If it is not set, add it with any type
+  # Value example per type:
   #   string: steve
   #   int: 10
   #   byte: 10b
@@ -152,17 +153,17 @@ command:
   #   blockpos: b#10,10,10
   #   vector3f: v#10,10,10
   # For the key, see https://github.com/pmmp/BedrockProtocol/blob/master/src/types/entity/EntityMetadataProperties.php
-  # Usage /updateplayerproperty <key> <value> [player]
-  # e.g. /updateplayerproperty 4 Steve
-  #      /updateplayerproperty 1 20
-  #      /updateplayerproperty 3 1b
-  #      /updateplayerproperty 5 1l
-  #      /updateplayerproperty 7 10s
-  #      /updateplayerproperty 13 2f
-  #      /updateplayerproperty 28 b#10,10,10
-  #      /updateplayerproperty 56 v#10,10,10
-  update-player-property:
+  # Usage /setplayerproperty <key> <value> [player]
+  # e.g. /setplayerproperty 4 Steve
+  #      /setplayerproperty 1 20
+  #      /setplayerproperty 3 1b
+  #      /setplayerproperty 5 1l
+  #      /setplayerproperty 7 10s
+  #      /setplayerproperty 13 2f
+  #      /setplayerproperty 28 b#10,10,10
+  #      /setplayerproperty 56 v#10,10,10
+  set-player-property:
     enabled: true
-    name: "updateplayerproperty"
+    name: "setplayerproperty"
     aliases: ["playerproperty", "pp"]
     permission: "op"

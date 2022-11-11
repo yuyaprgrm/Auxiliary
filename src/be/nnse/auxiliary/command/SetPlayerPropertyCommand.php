@@ -21,7 +21,7 @@ use pocketmine\network\mcpe\protocol\types\entity\Vec3MetadataProperty;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 
-class UpdatePlayerPropertyCommand extends WrapperCommand
+class SetPlayerPropertyCommand extends WrapperCommand
 {
     /** @var string[] */
     private array $typeName = [];
@@ -30,7 +30,7 @@ class UpdatePlayerPropertyCommand extends WrapperCommand
 
     public function __construct(string $name, array $aliases = [], $default = "op")
     {
-        parent::__construct($name, "Update target player's metadata property", $aliases, $default);
+        parent::__construct($name, "Set target player's metadata property", $aliases, $default);
 
         foreach ((new \ReflectionClass(EntityMetadataTypes::class))->getConstants() as $key => $value) {
             $this->typeName[$value] = $key;

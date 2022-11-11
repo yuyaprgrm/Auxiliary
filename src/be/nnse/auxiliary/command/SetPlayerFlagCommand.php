@@ -9,14 +9,14 @@ use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataFlags;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 
-class UpdatePlayerFlagCommand extends WrapperCommand
+class SetPlayerFlagCommand extends WrapperCommand
 {
     /** @var string[] */
     private array $flagNames = [];
 
     public function __construct(string $name, array $aliases = [], $default = "op")
     {
-        parent::__construct($name, "Update target player's metadata flag", $aliases, $default);
+        parent::__construct($name, "Set target player's metadata flag", $aliases, $default);
 
         $reflectionClass = new \ReflectionClass(EntityMetadataFlags::class);
         foreach ($reflectionClass->getConstants() as $key => $value) {

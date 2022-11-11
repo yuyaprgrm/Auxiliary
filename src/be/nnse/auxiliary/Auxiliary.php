@@ -11,8 +11,8 @@ use be\nnse\auxiliary\command\SpawnEntityCommand;
 use be\nnse\auxiliary\command\StopSoundCommand;
 use be\nnse\auxiliary\command\TeleportSpawnCommand;
 use be\nnse\auxiliary\command\TeleportWorldCommand;
-use be\nnse\auxiliary\command\UpdatePlayerFlagCommand;
-use be\nnse\auxiliary\command\UpdatePlayerPropertyCommand;
+use be\nnse\auxiliary\command\SetPlayerFlagCommand;
+use be\nnse\auxiliary\command\SetPlayerPropertyCommand;
 use be\nnse\auxiliary\listener\AutoShutdownListener;
 use be\nnse\auxiliary\listener\CatchPacketListener;
 use be\nnse\auxiliary\listener\ShowStatusListener;
@@ -132,18 +132,18 @@ class Auxiliary extends PluginBase
                     (string) ConfigValue::COMMAND_STOP_SOUND_PERMISSION()->get(),
                 );
             }
-            if (ConfigValue::COMMAND_UPDATE_PLAYER_FLAG()->get()) {
-                $commands[] = new UpdatePlayerFlagCommand(
-                    (string) ConfigValue::COMMAND_UPDATE_PLAYER_FLAG_NAME()->get(),
-                    (array) ConfigValue::COMMAND_UPDATE_PLAYER_FLAG_ALIASES()->get(),
-                    (string) ConfigValue::COMMAND_UPDATE_PLAYER_FLAG_PERMISSION()->get(),
+            if (ConfigValue::COMMAND_SET_PLAYER_FLAG()->get()) {
+                $commands[] = new SetPlayerFlagCommand(
+                    (string) ConfigValue::COMMAND_SET_PLAYER_FLAG_NAME()->get(),
+                    (array) ConfigValue::COMMAND_SET_PLAYER_FLAG_ALIASES()->get(),
+                    (string) ConfigValue::COMMAND_SET_PLAYER_FLAG_PERMISSION()->get(),
                 );
             }
-            if (ConfigValue::COMMAND_UPDATE_PLAYER_PROPERTY()->get()) {
-                $commands[] = new UpdatePlayerPropertyCommand(
-                    (string) ConfigValue::COMMAND_UPDATE_PLAYER_PROPERTY_NAME()->get(),
-                    (array) ConfigValue::COMMAND_UPDATE_PLAYER_PROPERTY_ALIASES()->get(),
-                    (string) ConfigValue::COMMAND_UPDATE_PLAYER_PROPERTY_PERMISSION()->get(),
+            if (ConfigValue::COMMAND_SET_PLAYER_PROPERTY()->get()) {
+                $commands[] = new SetPlayerPropertyCommand(
+                    (string) ConfigValue::COMMAND_SET_PLAYER_PROPERTY_NAME()->get(),
+                    (array) ConfigValue::COMMAND_SET_PLAYER_PROPERTY_ALIASES()->get(),
+                    (string) ConfigValue::COMMAND_SET_PLAYER_PROPERTY_PERMISSION()->get(),
                 );
             }
 
