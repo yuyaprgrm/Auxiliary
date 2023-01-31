@@ -44,6 +44,12 @@ class TeleportWorldCommand extends WrapperCommand
                     break;
                 }
             }
+            if ($target === null) {
+                $loaded = $sender->getServer()->getWorldManager()->loadWorld($args[0]);
+                if (!$loaded) return null;
+
+                $target = $sender->getServer()->getWorldManager()->getWorldByName($args[0]);
+            }
 
             $player = $sender;
             if (isset($args[1]) && is_string($args[1])) {
