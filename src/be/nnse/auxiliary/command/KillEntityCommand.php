@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace be\nnse\auxiliary\command;
 
-use be\nnse\auxiliary\Auxiliary;
+use be\nnse\auxiliary\Formatter;
 use pocketmine\command\CommandSender;
 use pocketmine\network\mcpe\protocol\types\entity\EntityIds;
 use pocketmine\player\Player;
@@ -45,15 +45,17 @@ class KillEntityCommand extends WrapperCommand
             if (count($args) < 1) {
                 $sender->sendMessage(TextFormat::GREEN . "--- List of entity in this world ---");
                 foreach ($entities as $entity) {
-                    $eid = Auxiliary::getInstance()->formatText("ID", $entity->getId());
-                    $type = Auxiliary::getInstance()->formatText("Type", $entity::getNetworkTypeId());
+                    $eid = Formatter::getInstance()->oto2Str("ID", $entity->getId());
+                    $type = Formatter::getInstance()->oto2Str("Type", $entity::getNetworkTypeId());
                     $v = $entity->getPosition()->asVector3();
-                    $pos = Auxiliary::getInstance()->formatText(
+                    $pos = Formatter::getInstance()->xyz2Str(
                         "Position",
-                        $v->getFloorX().", ".$v->getFloorY().", ".$v->getFloorZ()
+                        (string) $v->getFloorX(),
+                        (string) $v->getFloorY(),
+                        (string) $v->getFloorZ()
                     );
 
-                    $sender->sendMessage($eid.", ".$type.", ".$pos);
+                    $sender->sendMessage($eid . ", " . $type . ", " .$pos);
                 }
                 return null;
             }

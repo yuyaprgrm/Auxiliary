@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace be\nnse\auxiliary\listener;
 
-use be\nnse\auxiliary\Auxiliary;
 use be\nnse\auxiliary\ConfigValue;
+use be\nnse\auxiliary\Formatter;
 use pocketmine\event\Listener;
 use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\event\server\DataPacketSendEvent;
@@ -48,7 +48,7 @@ class CatchPacketListener implements Listener
             if (in_array($name, $this->ignorePacketNames)) continue;
             foreach ($ops as $op) {
                 if ($op instanceof Player && $op->isConnected()) {
-                    $op->sendMessage(Auxiliary::getInstance()->formatText("SEND", $name));
+                    $op->sendMessage(Formatter::getInstance()->oto2Str("SEND", $name));
                 }
             }
         }
@@ -62,7 +62,7 @@ class CatchPacketListener implements Listener
 
         $player = $event->getOrigin()?->getPlayer();
         if ($player instanceof Player && $player->isConnected() && $player->getServer()->isOp($player->getName())) {
-            $player->sendMessage(Auxiliary::getInstance()->formatText("RECEIVE", $pk->getName()));
+            $player->sendMessage(Formatter::getInstance()->oto2Str("RECEIVE", $pk->getName()));
         }
     }
 }

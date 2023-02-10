@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace be\nnse\auxiliary\command;
 
-use be\nnse\auxiliary\Auxiliary;
+use be\nnse\auxiliary\Formatter;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 
@@ -30,29 +30,25 @@ class CheckItemCommand extends WrapperCommand
 
         if ($sender instanceof Player) {
             $item = $sender->getInventory()->getItemInHand();
-            $id = $item->getId();
-            $meta = $item->getMeta();
-            $name = $item->getName();
+            $itemText = $item->getId() . ":" . $item->getMeta() . " (" . $item->getName() . ")";
             $canDestroy = $item->getCanDestroy();
             $canPlaceOn = $item->getCanPlaceOn();
 
-            $sender->sendMessage(Auxiliary::getInstance()->formatText($id.":".$meta, $name));
+            $sender->sendMessage(Formatter::getInstance()->oto2Str("ItemInHand", $itemText));
             if (!empty($canDestroy)) {
-                $blockIds = Auxiliary::getInstance()->formatText("CanDestroy", implode(", ", $canDestroy));
-                $sender->sendMessage($blockIds);
+                $sender->sendMessage(Formatter::getInstance()->oto2Str("CanDestroy", implode(", ", $canDestroy)));
             }
             if (!empty($canPlaceOn)) {
-                $blockIds = Auxiliary::getInstance()->formatText("CanPlaceOn", implode(", ", $canPlaceOn));
-                $sender->sendMessage($blockIds);
+                $sender->sendMessage(Formatter::getInstance()->oto2Str("CanPlaceOn", implode(", ", $canPlaceOn)));
             }
 
             $nbt = $item->getNamedTag();
             foreach ($nbt->getValue() as $key => $tag) {
                 $value = $tag->getValue();
                 if (is_array($value)) {
-                    $tagData = Auxiliary::getInstance()->formatText((string) $key, implode(", ", $tag->getValue()));
+                    $tagData = Formatter::getInstance()->oto2Str((string) $key, implode(", ", $tag->getValue()));
                 } else {
-                    $tagData = Auxiliary::getInstance()->formatText((string) $key, $tag->getValue());
+                    $tagData = Formatter::getInstance()->oto2Str((string) $key, $tag->getValue());
                 }
                 $sender->sendMessage($tagData);
             }
