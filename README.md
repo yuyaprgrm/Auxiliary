@@ -24,7 +24,8 @@ catch-packet:
   ignores: ["PlayerAuthInputPacket"]
 
 
-# Value text format
+# Value text format (Can colorizing by "&")
+# e.g. {%0} &7({%1})&r
 # {%0}: title
 # {%1}: value
 value-format: "{%0} ({%1})"
