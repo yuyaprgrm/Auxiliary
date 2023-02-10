@@ -95,6 +95,9 @@ blocks-status:
 # e.g. /killentity ?
 command:
   enabled: true
+  # Whether announce to operators about executing command
+  # If true, operators only can get the message like "[Steve:Checked an item in hand]"
+  announce-to-operators: true
   # Add the feature to check item in hand
   # Usage /checkitem
   # e.g. /checkitem

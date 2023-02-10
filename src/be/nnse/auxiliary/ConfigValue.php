@@ -45,6 +45,7 @@ use pocketmine\utils\EnumTrait;
  * @method static ConfigValue BLOCKS_STATUS_IN_WATER()
  * @method static ConfigValue BLOCKS_STATUS_IN_LAVA()
  * @method static ConfigValue COMMAND()
+ * @method static ConfigValue COMMAND_ANNOUNCE_TO_OPERATORS()
  * @method static ConfigValue COMMAND_CHECK_ITEM()
  * @method static ConfigValue COMMAND_KILL_ENTITY()
  * @method static ConfigValue COMMAND_SPAWN_ENTITY()
@@ -126,6 +127,7 @@ class ConfigValue
             new self("blocks_status_in_lava", "blocks-status.in_lava", true),
 
             new self("command", "command.enabled", true),
+            new self("command_announce_to_operators", "command.announce-to-operators", true),
             new self("command_check_item", "command.check-item.enabled", true),
             new self("command_kill_entity", "command.kill-entity.enabled", true),
             new self("command_spawn_entity", "command.spawn-entity.enabled", true),

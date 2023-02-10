@@ -14,9 +14,11 @@ declare(strict_types=1);
 namespace be\nnse\auxiliary\command;
 
 use be\nnse\auxiliary\Auxiliary;
+use be\nnse\auxiliary\ConfigValue;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\console\ConsoleCommandSender;
+use pocketmine\lang\Translatable;
 use pocketmine\permission\DefaultPermissionNames;
 use pocketmine\permission\PermissionParser;
 use pocketmine\plugin\Plugin;
@@ -60,6 +62,15 @@ abstract class WrapperCommand extends Command implements PluginOwned
             return false;
         }
         return true;
+    }
+
+    public static function broadcastCommandMessage(CommandSender $source, Translatable|string $message, bool $sendToSource = true) : void
+    {
+        if (ConfigValue::COMMAND_ANNOUNCE_TO_OPERATORS()->get()) {
+            parent::broadcastCommandMessage($source, $message, $sendToSource);
+        } else {
+            $source->sendMessage($message);
+        }
     }
 
     /**
