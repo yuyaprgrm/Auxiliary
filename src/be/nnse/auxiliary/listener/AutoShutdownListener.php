@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * ┌┐┌┌┐┌┌─┐┌─┐  ║  ╔═╗┬ ┬─┐ ┬┬┬  ┬┌─┐┬─┐┬ ┬
+ * ││││││└─┐├┤   ║  ╠═╣│ │┌┴┬┘││  │├─┤├┬┘└┬┘
+ * ┘└┘┘└┘└─┘└─┘  ║  ╩ ╩└─┘┴ └─┴┴─┘┴┴ ┴┴└─ ┴
+ *
+ * Plugin which assist to make plugin.
+ * @author nnse
+ */
+
 declare(strict_types=1);
 
 namespace be\nnse\auxiliary\listener;
