@@ -21,10 +21,30 @@ catch-packet:
 
 
 # Value text format (Can colorizing by "&")
-# e.g. {%0} &7({%1})&r
-# {%0}: title
-# {%1}: value
-value-format: "{%0} ({%1})"
+# e.g. &l&7[&r{%0}&l&7]&r {%1}
+format:
+  # One-To-One value format
+  # {%title}: title
+  # {%value}: value
+  one-to-one: "[{%title}] {%value}"
+  # Block text format:
+  #  {%title}: title
+  #  {%id}: Block id
+  #  {%meta}: Block meta
+  #  {%name}: Block vanilla name
+  #  {%typeId}: Block type id
+  block-value: "[{%title}] {%id}:{%meta} ({%name})"
+  #  {%title}: title
+  #  {%x}: x
+  #  {%y}: y
+  #  {%z}: z
+  xyz-value: "[{%title}] {%x}, {%y}, {%z}"
+  # Boolean value text format
+  boolean-value:
+    # True
+    true: "[{%title}] True"
+    # False
+    false: "[{%title}] False"
 
 
 # Whether to show the status about location and motion.

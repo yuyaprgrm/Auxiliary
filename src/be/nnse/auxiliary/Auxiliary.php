@@ -17,7 +17,6 @@ use be\nnse\auxiliary\listener\AutoShutdownListener;
 use be\nnse\auxiliary\listener\CatchPacketListener;
 use be\nnse\auxiliary\listener\ShowStatusListener;
 use pocketmine\plugin\PluginBase;
-use pocketmine\utils\TextFormat;
 
 class Auxiliary extends PluginBase
 {
@@ -34,18 +33,6 @@ class Auxiliary extends PluginBase
         $this->registerCommands();
         $this->adaptTimeSetting();
     }
-
-    /**
-     * @param string $title
-     * @param string $value
-     * @return string
-     */
-    public function formatText(string $title, mixed $value) : string
-    {
-        $format = (string) ConfigValue::VALUE_FORMAT()->get();
-        return TextFormat::colorize(str_replace(["{%0}", "{%1}"], [$title, (string) $value], $format));
-    }
-
 
     /**
      * @return void

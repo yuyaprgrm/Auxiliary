@@ -4,16 +4,13 @@ declare(strict_types=1);
 
 namespace be\nnse\auxiliary\listener;
 
-use be\nnse\auxiliary\Auxiliary;
 use be\nnse\auxiliary\ConfigValue;
-use pocketmine\block\Block;
+use be\nnse\auxiliary\Formatter;
 use pocketmine\block\Lava;
 use pocketmine\block\Water;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\math\Facing;
-use pocketmine\math\Vector3;
-use pocketmine\player\Player;
 use pocketmine\Server;
 
 class ShowStatusListener implements Listener
@@ -93,23 +90,23 @@ class ShowStatusListener implements Listener
                 $x = sprintf(self::NUMBER_FORMAT, $location->getX());
                 $y = sprintf(self::NUMBER_FORMAT, $location->getY());
                 $z = sprintf(self::NUMBER_FORMAT, $location->getZ());
-                $text[] = Auxiliary::getInstance()->formatText("XYZ", $x.", ".$y.", ".$z);
+                $text[] = Formatter::getInstance()->xyz2Str("XYZ", $x, $y, $z);
             }
             if ($this->showYaw) {
                 $yaw = sprintf(self::NUMBER_FORMAT, $location->getYaw());
-                $text[] = Auxiliary::getInstance()->formatText("Yaw", $yaw);
+                $text[] = Formatter::getInstance()->oto2Str("Yaw", $yaw);
             }
             if ($this->showPitch) {
                 $pitch = sprintf(self::NUMBER_FORMAT, $location->getPitch());
-                $text[] = Auxiliary::getInstance()->formatText("Pitch", $pitch);
+                $text[] = Formatter::getInstance()->oto2Str("Pitch", $pitch);
             }
             if ($this->showWorld) {
                 $worldName = $location->getWorld()->getFolderName();
-                $text[] = Auxiliary::getInstance()->formatText("World", $worldName);
+                $text[] = Formatter::getInstance()->oto2Str("World", $worldName);
             }
             if ($this->showFacing) {
                 $face = $player->getHorizontalFacing();
-                $text[] = Auxiliary::getInstance()->formatText("Direction", Facing::toString($face));
+                $text[] = Formatter::getInstance()->oto2Str("Direction", Facing::toString($face));
             }
         }
         $text[] = "";
@@ -117,18 +114,15 @@ class ShowStatusListener implements Listener
         if ($this->enabledBlockStatus) {
             if ($this->showTarget) {
                 $target = $player->getTargetBlock($this->maxRange);
-                $data = $target->getName() . " | " . $target->getId() . ":" . $target->getMeta();
-                $text[] = Auxiliary::getInstance()->formatText("Target ", $data);
+                $text[] = Formatter::getInstance()->block2Str("Target", $target);
             }
             if ($this->showUnder) {
                 $under = $player->getWorld()->getBlock($player->getPosition()->subtract(0, 0.2, 0));
-                $data = $under->getName() . " | " . $under->getId() . ":" . $under->getMeta();
-                $text[] = Auxiliary::getInstance()->formatText("Under ", $data);
+                $text[] = Formatter::getInstance()->block2Str("Under", $under);
             }
             if ($this->showAbove) {
                 $above = $player->getWorld()->getBlock($player->getEyePos()->add(0, 0.5, 0));
-                $data = $above->getName() . " | " . $above->getId() . ":" . $above->getMeta();
-                $text[] = Auxiliary::getInstance()->formatText("Above ", $data);
+                $text[] = Formatter::getInstance()->block2Str("Above", $above);
             }
 
             $nextVector = $player->getPosition()->asVector3();
@@ -139,15 +133,13 @@ class ShowStatusListener implements Listener
                 $v = clone $nextVector;
                 $v->y -= 0.25;
                 $nextBlock = $player->getWorld()->getBlock($v);
-                $data = $nextBlock->getName() . " | " . $nextBlock->getId() . ":" . $nextBlock->getMeta();
-                $text[] = Auxiliary::getInstance()->formatText("Next ", ($data));
+                $text[] = Formatter::getInstance()->block2Str("Next", $nextBlock);
             }
             if ($this->showFront) {
                 $v = clone $nextVector;
                 $v->y += 0.5;
                 $frontBlock = $player->getWorld()->getBlock($v);
-                $data = $frontBlock->getName() . " | " . $frontBlock->getId() . ":" . $frontBlock->getMeta();
-                $text[] = Auxiliary::getInstance()->formatText("Front ", ($data));
+                $text[] = Formatter::getInstance()->block2Str("Front", $frontBlock);
             }
             if ($this->showBack) {
                 $backVector = $player->getPosition()->asVector3();
@@ -155,17 +147,15 @@ class ShowStatusListener implements Listener
                 $backVector->z += cos(deg2rad($player->getLocation()->yaw + 180)) * 0.45;
                 $backVector->y += 0.5;
                 $backBlock = $player->getWorld()->getBlock($backVector);
-                $data = $backBlock->getName() . " | " . $backBlock->getId() . ":" . $backBlock->getMeta();
-                $text[] = Auxiliary::getInstance()->formatText("Back ", ($data));
+                $text[] = Formatter::getInstance()->block2Str("Back", $backBlock);
             }
-
             if ($this->showInWater) {
                 $data = $player->getWorld()->getBlock($player->getPosition()->add(0, 0.2, 0)) instanceof Water;
-                $text[] = Auxiliary::getInstance()->formatText("In water ", ($data ? "True" : "False"));
+                $text[] = Formatter::getInstance()->bool2Str("In water", $data);
             }
             if ($this->showInLava) {
                 $data = $player->getWorld()->getBlock($player->getPosition()->add(0, 0.2, 0)) instanceof Lava;
-                $text[] = Auxiliary::getInstance()->formatText("In lava ", ($data ? "True" : "False"));
+                $text[] = Formatter::getInstance()->bool2Str("In lava", $data);
             }
         }
 

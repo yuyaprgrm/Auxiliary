@@ -14,7 +14,11 @@ use pocketmine\utils\EnumTrait;
  * @method static ConfigValue CATCH_CLIENT_PACKET()
  * @method static ConfigValue CATCH_SERVER_PACKET()
  * @method static ConfigValue IGNORE_PACKETS()
- * @method static ConfigValue VALUE_FORMAT()
+ * @method static ConfigValue FORMAT_ONE_TO_ONE()
+ * @method static ConfigValue FORMAT_BLOCK_VALUE()
+ * @method static ConfigValue FORMAT_XYZ_VALUE()
+ * @method static ConfigValue FORMAT_BOOLEAN_VALUE_TRUE()
+ * @method static ConfigValue FORMAT_BOOLEAN_VALUE_FALSE()
  * @method static ConfigValue MOVEMENT_STATUS()
  * @method static ConfigValue MOVEMENT_STATUS_SHOW_XYZ()
  * @method static ConfigValue MOVEMENT_STATUS_SHOW_YAW()
@@ -88,7 +92,11 @@ class ConfigValue
             new self("catch_server_packet", "catch-packet.server", true),
             new self("ignore_packets", "catch-packet.ignores", []),
 
-            new self("value_format", "value-format", "{%0} ({%1})"),
+            new self("format_one_to_one", "format.one-to-one", "[{%title}] {%value}"),
+            new self("format_block_value", "format.block-value", "[{%title}] {%id}:{%meta} ({%name})"),
+            new self("format_xyz_value", "format.xyz-value", "[{%title}] {%x}, {%y}, {%z}"),
+            new self("format_boolean_value_true", "format.boolean-value.true", "[{%title}] True"),
+            new self("format_boolean_value_false", "format.boolean-value.false", "[{%title}] False"),
 
             new self("movement_status", "movement-status.enabled", false),
             new self("movement_status_show_xyz", "movement-status.show-xyz", true),
