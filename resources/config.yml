@@ -52,6 +52,10 @@ blocks-status:
   under: true
   # Above block
   above: true
+  # Next block
+  next: true
+  # Front block
+  front: true
   # Whether you are underwater or not
   in_water: true
   # Whether you are under-lava or not

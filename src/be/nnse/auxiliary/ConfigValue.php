@@ -26,6 +26,8 @@ use pocketmine\utils\EnumTrait;
  * @method static ConfigValue BLOCKS_STATUS_TARGET()
  * @method static ConfigValue BLOCKS_STATUS_UNDER()
  * @method static ConfigValue BLOCKS_STATUS_ABOVE()
+ * @method static ConfigValue BLOCKS_STATUS_NEXT()
+ * @method static ConfigValue BLOCKS_STATUS_FRONT()
  * @method static ConfigValue BLOCKS_STATUS_IN_WATER()
  * @method static ConfigValue BLOCKS_STATUS_IN_LAVA()
  * @method static ConfigValue COMMAND()
@@ -99,6 +101,8 @@ class ConfigValue
             new self("blocks_status_target", "blocks-status.target", true),
             new self("blocks_status_under", "blocks-status.under", true),
             new self("blocks_status_above", "blocks-status.above", true),
+            new self("blocks_status_next", "blocks-status.next", true),
+            new self("blocks_status_front", "blocks-status.front", true),
             new self("blocks_status_in_water", "blocks-status.in_water", true),
             new self("blocks_status_in_lava", "blocks-status.in_lava", true),
 

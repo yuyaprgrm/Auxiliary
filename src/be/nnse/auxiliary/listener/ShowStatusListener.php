@@ -38,7 +38,11 @@ class ShowStatusListener implements Listener
     /** @var bool */
     private bool $showUnder;
     /** @var bool */
+    private bool $showNext;
+    /** @var bool */
     private bool $showAbove;
+    /** @var bool */
+    private bool $showFront;
     /** @var bool */
     private bool $showInWater;
     /** @var bool */
@@ -58,7 +62,9 @@ class ShowStatusListener implements Listener
         $this->maxRange = (int) ConfigValue::BLOCKS_STATUS_MAX_RANGE()->get();
         $this->showTarget = (bool) ConfigValue::BLOCKS_STATUS_TARGET()->get();
         $this->showUnder = (bool) ConfigValue::BLOCKS_STATUS_UNDER()->get();
+        $this->showNext = (bool) ConfigValue::BLOCKS_STATUS_NEXT()->get();
         $this->showAbove = (bool) ConfigValue::BLOCKS_STATUS_ABOVE()->get();
+        $this->showFront = (bool) ConfigValue::BLOCKS_STATUS_FRONT()->get();
         $this->showInWater = (bool) ConfigValue::BLOCKS_STATUS_IN_WATER()->get();
         $this->showInLava = (bool) ConfigValue::BLOCKS_STATUS_IN_LAVA()->get();
     }
@@ -118,6 +124,26 @@ class ShowStatusListener implements Listener
                 $data = $above->getName() . " | " . $above->getId() . ":" . $above->getMeta();
                 $text[] = Auxiliary::getInstance()->formatText("Above ", $data);
             }
+
+            $nextVector = $player->getPosition()->asVector3();
+            $nextVector->x -= sin(deg2rad($player->getLocation()->yaw)) * 0.45;
+            $nextVector->z += cos(deg2rad($player->getLocation()->yaw)) * 0.45;
+
+            if ($this->showNext) {
+                $v = clone $nextVector;
+                $v->y -= 0.25;
+                $nextBlock = $player->getWorld()->getBlock($v);
+                $data = $nextBlock->getName() . " | " . $nextBlock->getId() . ":" . $nextBlock->getMeta();
+                $text[] = Auxiliary::getInstance()->formatText("Next ", ($data));
+            }
+            if ($this->showFront) {
+                $v = clone $nextVector;
+                $v->y += 0.5;
+                $frontBlock = $player->getWorld()->getBlock($v);
+                $data = $frontBlock->getName() . " | " . $frontBlock->getId() . ":" . $frontBlock->getMeta();
+                $text[] = Auxiliary::getInstance()->formatText("Front ", ($data));
+            }
+
             if ($this->showInWater) {
                 $data = $player->getWorld()->getBlock($player->getPosition()->add(0, 0.2, 0)) instanceof Water;
                 $text[] = Auxiliary::getInstance()->formatText("In water ", ($data ? "True" : "False"));
