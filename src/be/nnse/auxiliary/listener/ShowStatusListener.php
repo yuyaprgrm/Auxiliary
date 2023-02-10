@@ -6,11 +6,14 @@ namespace be\nnse\auxiliary\listener;
 
 use be\nnse\auxiliary\Auxiliary;
 use be\nnse\auxiliary\ConfigValue;
+use pocketmine\block\Block;
 use pocketmine\block\Lava;
 use pocketmine\block\Water;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\math\Facing;
+use pocketmine\math\Vector3;
+use pocketmine\player\Player;
 use pocketmine\Server;
 
 class ShowStatusListener implements Listener
@@ -44,6 +47,8 @@ class ShowStatusListener implements Listener
     /** @var bool */
     private bool $showFront;
     /** @var bool */
+    private bool $showBack;
+    /** @var bool */
     private bool $showInWater;
     /** @var bool */
     private bool $showInLava;
@@ -65,6 +70,7 @@ class ShowStatusListener implements Listener
         $this->showNext = (bool) ConfigValue::BLOCKS_STATUS_NEXT()->get();
         $this->showAbove = (bool) ConfigValue::BLOCKS_STATUS_ABOVE()->get();
         $this->showFront = (bool) ConfigValue::BLOCKS_STATUS_FRONT()->get();
+        $this->showBack = (bool) ConfigValue::BLOCKS_STATUS_BACK()->get();
         $this->showInWater = (bool) ConfigValue::BLOCKS_STATUS_IN_WATER()->get();
         $this->showInLava = (bool) ConfigValue::BLOCKS_STATUS_IN_LAVA()->get();
     }
@@ -142,6 +148,15 @@ class ShowStatusListener implements Listener
                 $frontBlock = $player->getWorld()->getBlock($v);
                 $data = $frontBlock->getName() . " | " . $frontBlock->getId() . ":" . $frontBlock->getMeta();
                 $text[] = Auxiliary::getInstance()->formatText("Front ", ($data));
+            }
+            if ($this->showBack) {
+                $backVector = $player->getPosition()->asVector3();
+                $backVector->x -= sin(deg2rad($player->getLocation()->yaw + 180)) * 0.45;
+                $backVector->z += cos(deg2rad($player->getLocation()->yaw + 180)) * 0.45;
+                $backVector->y += 0.5;
+                $backBlock = $player->getWorld()->getBlock($backVector);
+                $data = $backBlock->getName() . " | " . $backBlock->getId() . ":" . $backBlock->getMeta();
+                $text[] = Auxiliary::getInstance()->formatText("Back ", ($data));
             }
 
             if ($this->showInWater) {
